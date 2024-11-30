@@ -16,6 +16,18 @@ Docker 方法只适用于 Linux 平台，但无需安装配置任何依赖，全
 
 通用方法适合于所有平台，但需要手动安装 Python 3.8+ 和 Selenium 等依赖库。如果有条件，请使用 Docker 方法。
 
+---
+
+> shellbox 适用于Docker方法，启动参数如下：
+
+```shell
+docker run -it -d -e ATRUST_OPTS='--portal_address="https://61.181.145.5:8443/passport/v1/public/casLogin" --username=账号 --password=密码' --device /dev/net/tun --cap-add NET_ADMIN -ti -e PASSWORD=VNC密码 -e URLWIN=1 -e PING_ADDR=10.1.254.85 -e PING_INTERVAL=120 -e PING_ADDR_URL=http://10.1.254.98:82/tpl/css/style.css-v $HOME/.atrust-data:/root -p 5999:5901 -p 8999:8888 --sysctl net.ipv4.conf.default.route_localnet=1 --shm-size 256m <DOCKER_CONTAINER_ID>
+```
+
+> 注意以上启动命令几处需要修改的参数值，username，password，PASSWORD，以及根据情况是否需要修改5999和8999映射端口号，最后还有最重要的DOCKER_CONTAINER_ID
+
+---
+
 ### 通用方法
 
 首先需要配置浏览器。
